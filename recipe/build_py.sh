@@ -11,7 +11,7 @@ rm -rf build
 mkdir build
 cd build
 
-echo "Setting Python3_INCLUDE_DIRS to "$PREFIX/include/`ls $PREFIX/include | grep python`
+echo "Setting Python3_INCLUDE_DIRS to "$PREFIX/include/`ls $PREFIX/include | grep "python\|pypy"`
 
 
 cmake ${CMAKE_ARGS} -GNinja .. \
@@ -20,7 +20,7 @@ cmake ${CMAKE_ARGS} -GNinja .. \
     -DUSE_SYSTEM_PATHS_FOR_PYTHON_INSTALLATION:BOOL=ON \
     -DPython3_EXECUTABLE:PATH=$PYTHON \
     -DPYTHON_EXECUTABLE:PATH=$PYTHON \
-    -DPython3_INCLUDE_DIRS:PATH=$PREFIX/include/`ls $PREFIX/include | grep python`
+    -DPython3_INCLUDE_DIRS:PATH=$PREFIX/include/`ls $PREFIX/include | grep "python\|pypy"`
 
 cmake --build . --config Release
 cmake --build . --config Release --target install
