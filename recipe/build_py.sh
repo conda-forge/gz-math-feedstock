@@ -16,7 +16,8 @@ cmake ${CMAKE_ARGS} -GNinja .. \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DUSE_SYSTEM_PATHS_FOR_PYTHON_INSTALLATION:BOOL=ON \
     -DPython3_EXECUTABLE:PATH=$PYTHON \
-    -DPYTHON_EXECUTABLE:PATH=$PYTHON
+    -DPYTHON_EXECUTABLE:PATH=$PYTHON \
+    -DPython3_INCLUDE_DIRS:PATH=$PREFIX/include`ls $PREFIX/include | grep python`
 
 cmake --build . --config Release
 cmake --build . --config Release --target install
