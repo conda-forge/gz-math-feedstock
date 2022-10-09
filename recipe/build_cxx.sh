@@ -10,6 +10,8 @@ fi
 # UNIT_Helpers_TEST fail due to some slightly different floating point results
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
     export CTEST_OPTIONS="-E INTEGRATION_ExamplesBuild_TEST|UNIT_Helpers_TEST "
+else
+    export CTEST_OPTIONS="-E INTEGRATION_ExamplesBuild_TEST "
 fi
 
 mkdir build
