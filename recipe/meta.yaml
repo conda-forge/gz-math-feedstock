@@ -18,7 +18,7 @@ source:
       - standalone_bindings.patch
 
 build:
-  number: 2
+  number: 3
 
 outputs:
   - name: {{ cxx_name }}
