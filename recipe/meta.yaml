@@ -1,6 +1,6 @@
 {% set component_name = "math" %}
 {% set repo_name = "gz-" + component_name %}
-{% set version = "7.0.2" %}
+{% set version = "7.1.0" %}
 {% set major_version = version.split('.')[0] %}
 {% set name = repo_name + major_version %}
 {% set component_version = component_name + major_version %}
@@ -13,12 +13,12 @@ package:
 
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ major_version }}_{{ version }}.tar.gz
-    sha256: 3b3db8b5d95d2b3de72d57956aa727bfb78c40c1776a54a1badf3ba9c2cd33a1
+    sha256: 3df09a16b84fa27fabf4955b5efb207f417ef9b0b5b801ae28cfda6d8e11765a
     patches:
       - standalone_bindings.patch
 
 build:
-  number: 3
+  number: 0
 
 outputs:
   - name: {{ cxx_name }}
@@ -104,7 +104,7 @@ about:
   home: https://github.com/gazebosim/gz-math
   license: Apache-2.0
   license_file: LICENSE
-  summary: General purpose math library for robot applications. 
+  summary: General purpose math library for robot applications.
 
 extra:
   feedstock-name: {{ repo_name }}
