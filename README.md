@@ -1,11 +1,11 @@
-About gz-math
-=============
+About gz-math-feedstock
+=======================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gz-math-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/gazebosim/gz-math
 
 Package license: Apache-2.0
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gz-math-feedstock/blob/main/LICENSE.txt)
 
 Summary: General purpose math library for robot applications.
 
