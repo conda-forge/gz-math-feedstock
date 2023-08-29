@@ -1,6 +1,6 @@
 {% set component_name = "math" %}
 {% set repo_name = "gz-" + component_name %}
-{% set version = "7.2.0" %}
+{% set version = "7.3.0" %}
 {% set major_version = version.split('.')[0] %}
 {% set name = repo_name + major_version %}
 {% set component_version = component_name + major_version %}
@@ -13,7 +13,7 @@ package:
 
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ major_version }}_{{ version }}.tar.gz
-    sha256: 9de884f77ba048b3651ec9a600457d73e4914637b3bfa5541675ef6774147127
+    sha256: 320afb30f43727340718743c0f8d94e61e9c1083c17927701efe75087f9cc6d0
     patches:
       - standalone_bindings.patch
 
