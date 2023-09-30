@@ -24,3 +24,7 @@ cmake ${CMAKE_ARGS} -GNinja .. \
 
 cmake --build . --config Release
 cmake --build . --config Release --target install
+
+# Run tests
+cd ../test
+pytest .
