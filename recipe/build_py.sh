@@ -27,4 +27,4 @@ cmake --build . --config Release --target install
 
 # Run tests
 cd ../test
-pytest .
+pytest *.py
