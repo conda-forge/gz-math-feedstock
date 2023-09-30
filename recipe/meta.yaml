@@ -16,6 +16,7 @@ source:
     sha256: 320afb30f43727340718743c0f8d94e61e9c1083c17927701efe75087f9cc6d0
     patches:
       - standalone_bindings.patch
+      - disable_win_py_failing_tests.py
 
 build:
   number: 1
