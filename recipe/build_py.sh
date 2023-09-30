@@ -27,4 +27,7 @@ cmake --build . --config Release --target install
 
 # Run tests
 cd ../test
-pytest *.py
+
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]];then
+  pytest *.py
+fi
