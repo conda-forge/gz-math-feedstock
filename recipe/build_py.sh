@@ -24,3 +24,10 @@ cmake ${CMAKE_ARGS} -GNinja .. \
 
 cmake --build . --config Release
 cmake --build . --config Release --target install
+
+# Run tests
+cd ../test
+
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]];then
+  pytest *.py
+fi

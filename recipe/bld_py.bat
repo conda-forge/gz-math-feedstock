@@ -21,3 +21,8 @@ if errorlevel 1 exit 1
 :: Install.
 cmake --build . --config Release --target install
 if errorlevel 1 exit 1
+
+:: Test
+cd ../test
+ctest .
+if errorlevel 1 exit 1

@@ -16,9 +16,10 @@ source:
     sha256: 320afb30f43727340718743c0f8d94e61e9c1083c17927701efe75087f9cc6d0
     patches:
       - standalone_bindings.patch
+      - 561.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - name: {{ cxx_name }}
