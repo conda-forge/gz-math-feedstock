@@ -38,8 +38,8 @@ outputs:
         # INTEGRATION_ExamplesBuild_TEST requires the use of Make
         - make  # [not win]
       host:
-        - libgz-cmake3
-        - libgz-utils2
+        - libgz-cmake4
+        - libgz-utils3
         - eigen
       run:
         - eigen
