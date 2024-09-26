@@ -18,6 +18,6 @@ index 6c0b8866..c58bce84 100644
 +  endif()
 +endif()
 +
- if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
-   # TODO: remove once the minimum CMake version is increased
-   if(WIN32 AND CMAKE_BUILD_TYPE STREQUAL "Debug")
+message(STATUS "Building pybind11 interfaces")
+set(BINDINGS_MODULE_NAME "math${PROJECT_VERSION_MAJOR}")
+# Split from main extension and converted to pybind11
