@@ -75,7 +75,6 @@ outputs:
       host:
         - {{ pin_subpackage(cxx_name, exact=True) }}
         - python
-        - pip
         - pybind11
         - pybind11-abi
         - pytest
@@ -100,7 +99,7 @@ outputs:
         - {{ pin_subpackage(python_name, max_pin='x.x.x') }}
     test:
       imports:
-        - gz.math7
+        - gz.math8
 
 about:
   home: https://github.com/gazebosim/gz-math
