@@ -87,7 +87,7 @@ outputs:
       requires:
         - pip
       imports:
-        - gz.math7
+        - gz.math8
 
   - name: {{ name }}
     build:
