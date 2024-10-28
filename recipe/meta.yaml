@@ -75,7 +75,6 @@ outputs:
       host:
         - {{ pin_subpackage(cxx_name, exact=True) }}
         - python
-        - pip
         - pybind11
         - pybind11-abi
         - pytest
