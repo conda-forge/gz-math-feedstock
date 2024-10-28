@@ -18,7 +18,7 @@ source:
       - standalone_bindings.patch
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - name: {{ cxx_name }}
@@ -75,7 +75,6 @@ outputs:
       host:
         - {{ pin_subpackage(cxx_name, exact=True) }}
         - python
-        - pip
         - pybind11
         - pybind11-abi
         - pytest
