@@ -1,6 +1,6 @@
 {% set component_name = "math" %}
 {% set repo_name = "gz-" + component_name %}
-{% set version = "8.1.0" %}
+{% set version = "8.1.1" %}
 {% set major_version = version.split('.')[0] %}
 {% set name = repo_name + major_version %}
 {% set component_version = component_name + major_version %}
@@ -13,7 +13,7 @@ package:
 
 source:
   - url: https://github.com/gazebosim/{{ repo_name }}/archive/{{ repo_name }}{{ major_version }}_{{ version }}.tar.gz
-    sha256: 0f27c86008b7d23a0d98e58d1987801ad2ba05e99998d0ad143ad399ee47e745
+    sha256: 0455b24069c61172b625c55348f3a722652058262422019176d0ff43551f7093
 
 build:
   number: 0
