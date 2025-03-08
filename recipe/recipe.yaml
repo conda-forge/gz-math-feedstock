@@ -51,12 +51,12 @@ outputs:
       - script:
         - if: not win
           then: 
-            - test -f ${PREFIX}/share/cmake/${{ name }}/${{ name }}-config.cmake
+            - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
             - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
             - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
         - if: win
           then: 
-            - if not exist %PREFIX%\Library\share\cmake\${{ name }}\${{ name }}-config.cmake exit 1
+            - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
             - if not exist %PREFIX%\\Library\\include\\gz\\{{ component_version }}\\gz\\{{ component_name }}.hh
             - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
             - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
@@ -111,12 +111,12 @@ outputs:
       - script:
         - if: not win
           then: 
-            - test -f ${PREFIX}/share/cmake/${{ name }}/${{ name }}-config.cmake
+            - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
             - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
             - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
         - if: win
           then: 
-            - if not exist %PREFIX%\Library\share\cmake\${{ name }}\${{ name }}-config.cmake exit 1
+            - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
             - if not exist %PREFIX%\Library\include\gz\{{ component_version }}\gz\{{ component_name }}.hh
             - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
             - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
