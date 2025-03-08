@@ -1,6 +1,8 @@
 context:
   version: "8.1.1"
   major_version: "8"
+  component_name: "math"
+  component_version: "math8"
   repo_name: "gz-math"
   name: "gz-math8"
   cxx_name: "libgz-math8"
