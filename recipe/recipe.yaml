@@ -77,18 +77,27 @@ outputs:
         - cmake
         - pkg-config
         - ninja
-        # INTEGRATION_ExamplesBuild_TEST requires the use of Make
-        - if: not win
+        - if: build_platform != target_platform
           then:
-            - make
+            - cross-python_${{ target_platform }}
+            - python
+            - pybind11
+            - pybind11-abi
+            - pytest
       host:
-        - libgz-cmake4
-        - libgz-utils3
-        - eigen
+        - ${{ pin_subpackage(cxx_name, exact=true) }}
+        - python
+        - pybind11
+        - pybind11-abi
+        - pytest
       run:
-        - eigen
-      run_exports:
-         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+        - ${{ pin_subpackage(cxx_name, exact=true) }}
+        - pythons
+
+    tests:
+      - python:
+          imports:
+            - gz.math8
 
   - package:
       name: ${{ name }}
@@ -111,6 +120,9 @@ outputs:
             - if not exist %PREFIX%\Library\include\gz\{{ component_version }}\gz\{{ component_name }}.hh
             - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
             - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
+      - python:
+          imports:
+            - gz.math8
 
 about:
   homepage: https://github.com/gazebosim/gz-cmake
