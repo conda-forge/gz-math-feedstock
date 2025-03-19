@@ -4,7 +4,7 @@
 
 [project]
 name = "gz-math-feedstock"
-version = "3.46.1"
+version = "3.47.0"
 description = "Pixi configuration for conda-forge/gz-math-feedstock"
 authors = ["@conda-forge/gz-math"]
 channels = ["conda-forge"]
