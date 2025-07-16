@@ -1,0 +1,140 @@
+context:
+  version: "7.5.2"
+  major_version: "7"
+  component_name: "math"
+  component_version: "math7"
+  repo_name: "gz-math"
+  name: "gz-math7"
+  cxx_name: "libgz-math7"
+  python_name: "gz-math7-python"
+
+recipe:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  - url: "https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz"
+    sha256: "f45e73b7df2ad25fbdf81ae99cab04a2e3f06b07114c5202f70681ea3aa852ef"
+
+build:
+  number: 0
+
+outputs:
+  - package:
+      name: ${{ cxx_name }}
+    build:
+      script:
+        - if: unix
+          then: build_cxx.sh
+        - if: win
+          then: bld_cxx.bat
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
+        - ${{ compiler('cxx') }}
+        - cmake
+        - pkg-config
+        - ninja
+        # INTEGRATION_ExamplesBuild_TEST requires the use of Make
+        - if: not win
+          then:
+            - make
+      host:
+        - libgz-cmake4
+        - libgz-utils2
+        - eigen
+      run:
+        - eigen
+      run_exports:
+         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+  
+    tests:
+      - script:
+        - if: not win
+          then: 
+            - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
+            - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
+            - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
+        - if: win
+          then: 
+            - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
+            - if not exist %PREFIX%\\Library\\include\\gz\\{{ component_version }}\\gz\\{{ component_name }}.hh
+            - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
+            - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
+
+  - package:
+      name: ${{ python_name }}
+    build:
+      script:
+        - if: unix
+          then: build_py.sh
+        - if: win
+          then: bld_py.bat
+    requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
+        - ${{ compiler('cxx') }}
+        - cmake
+        - pkg-config
+        - ninja
+        - if: build_platform != target_platform
+          then:
+            - cross-python_${{ target_platform }}
+            - python
+            - pybind11
+            - pybind11-abi
+            - pytest
+      host:
+        - ${{ pin_subpackage(cxx_name, exact=true) }}
+        - python
+        - pybind11
+        - pybind11-abi
+        - pytest
+      run:
+        - ${{ pin_subpackage(cxx_name, exact=true) }}
+        - python
+
+    tests:
+      - python:
+          imports:
+            - gz.math7
+
+  - package:
+      name: ${{ name }}
+    requirements:
+      run:
+        - ${{ pin_subpackage(cxx_name, exact=true) }}
+        - ${{ pin_subpackage(python_name, upper_bound='x.x.x') }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+    tests:
+      - script:
+        - if: not win
+          then: 
+            - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
+            - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
+            - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
+        - if: win
+          then: 
+            - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
+            - if not exist %PREFIX%\Library\include\gz\{{ component_version }}\gz\{{ component_name }}.hh
+            - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
+            - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
+      - python:
+          imports:
+            - gz.math7
+
+about:
+  homepage: https://github.com/gazebosim/gz-math
+  repository: https://github.com/gazebosim/gz-math
+  license: "Apache-2.0"
+  license_file: "LICENSE"
+  summary: "General purpose math library for robot applications."
+
+extra:
+  recipe-maintainers:
+    - wolfv
+    - traversaro
+    - j-rivero
