@@ -17,7 +17,7 @@ source:
     sha256: "f45e73b7df2ad25fbdf81ae99cab04a2e3f06b07114c5202f70681ea3aa852ef"
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
@@ -47,22 +47,20 @@ outputs:
       run:
         - eigen
       run_exports:
-         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
-  
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+
     tests:
       - script:
-        - if: not win
-          then: 
-            - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
-            - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
-            - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
-        - if: win
-          then: 
-            - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
-            - if not exist %PREFIX%\\Library\\include\\gz\\{{ component_version }}\\gz\\{{ component_name }}.hh
-            - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
-            - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
-
+          - if: not win
+            then:
+              - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
+              - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
+              - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
+            else:
+              - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
+              - if not exist %PREFIX%\\Library\\include\\gz\\{{ component_version }}\\gz\\{{ component_name }}.hh
+              - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
+              - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
   - package:
       name: ${{ python_name }}
     build:
@@ -111,17 +109,16 @@ outputs:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:
       - script:
-        - if: not win
-          then: 
-            - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
-            - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
-            - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
-        - if: win
-          then: 
-            - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
-            - if not exist %PREFIX%\Library\include\gz\{{ component_version }}\gz\{{ component_name }}.hh
-            - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
-            - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
+          - if: not win
+            then:
+              - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
+              - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
+              - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
+            else:
+              - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
+              - if not exist %PREFIX%\Library\include\gz\{{ component_version }}\gz\{{ component_name }}.hh
+              - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
+              - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
       - python:
           imports:
             - gz.math7
