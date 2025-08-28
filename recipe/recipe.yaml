@@ -57,7 +57,7 @@ outputs:
               - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
               - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
             else:
-              - if not exist %PREFIX%\\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
+              - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
               - if not exist %PREFIX%\\Library\\include\\gz\\${{ component_version }}\\gz\\${{ component_name }}.hh
               - if not exist %PREFIX%\\Library\\lib\\${{ name }}.lib exit 1
               - if not exist %PREFIX%\\Library\\bin\\${{ name }}.dll exit 1
@@ -115,7 +115,7 @@ outputs:
               - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
               - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
             else:
-              - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\${{ name }}-config.cmake exit 1
+              - if not exist %PREFIX%\\Library\\lib\\cmake\\${{ name }}\\${{ name }}-config.cmake exit 1
               - if not exist %PREFIX%\\Library\\include\\gz\\${{ component_version }}\gz\${{ component_name }}.hh
               - if not exist %PREFIX%\\Library\\lib\\${{ name }}.lib exit 1
               - if not exist %PREFIX%\\Library\\bin\\${{ name }}.dll exit 1
