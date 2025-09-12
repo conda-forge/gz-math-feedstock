@@ -50,17 +50,18 @@ outputs:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
 
     tests:
+      - package_contents:
+          include:
+            - "gz/${{ component_version }}/gz/${{ component_name }}.hh"
+          lib:
+            - ${{ name }}
       - script:
-          - if: not win
-            then:
-              - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
-              - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
-              - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
-            else:
-              - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
-              - if not exist %PREFIX%\\Library\\include\\gz\\${{ component_version }}\\gz\\${{ component_name }}.hh
-              - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
-              - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
+          - cmake-package-check gz-math8
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
   - package:
       name: ${{ python_name }}
     build:
@@ -109,26 +110,22 @@ outputs:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:
       - script:
-          - if: not win
-            then:
-              - test -f ${PREFIX}/lib/cmake/${{ name }}/${{ name }}-config.cmake
-              - test -f ${PREFIX}/include/gz/${{ component_version }}/gz/${{ component_name }}.hh
-              - test -f ${PREFIX}/lib/lib${{ name }}${SHLIB_EXT}
-            else:
-              - if not exist %PREFIX%\Library\lib\cmake\${{ name }}\${{ name }}-config.cmake exit 1
-              - if not exist %PREFIX%\Library\include\gz\${{ component_version }}\gz\${{ component_name }}.hh
-              - if not exist %PREFIX%\Library\lib\${{ name }}.lib exit 1
-              - if not exist %PREFIX%\Library\bin\${{ name }}.dll exit 1
+          - cmake-package-check gz-math8
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
       - python:
           imports:
             - gz.math8
 
 about:
-  homepage: https://github.com/gazebosim/gz-cmake
-  repository: https://github.com/gazebosim/gz-cmake
+  homepage: https://github.com/gazebosim/gz-math
+  repository: https://github.com/gazebosim/gz-math
   license: "Apache-2.0"
   license_file: "LICENSE"
-  summary: "A set of CMake modules that are used by the C++-based Gazebo projects."
+  summary: "General purpose math library for robot applications."
 
 extra:
   recipe-maintainers:
