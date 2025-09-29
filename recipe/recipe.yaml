@@ -51,7 +51,7 @@ outputs:
     tests:
       - package_contents:
           include:
-            - "gz/${{ component_name }}/gz/${{ component_name }}.hh"
+            - "gz/${{ component_name }}${{ major_version }}/gz/${{ component_name }}.hh"
           lib:
             - ${{ name }}
       - script:
