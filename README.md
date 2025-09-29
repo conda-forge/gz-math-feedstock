@@ -1,15 +1,15 @@
-About gz-math8-feedstock
-========================
+About gz-math-feedstock
+=======================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gz-math-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/gazebosim/gz-cmake
+Home: https://github.com/gazebosim/gz-math
 
 Package license: Apache-2.0
 
-Summary: A set of CMake modules that are used by the C++-based Gazebo projects.
+Summary: General purpose math library for robot applications.
 
-Development: https://github.com/gazebosim/gz-cmake
+Development: https://github.com/gazebosim/gz-math
 
 Current build status
 ====================
@@ -125,55 +125,55 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--math8-green.svg)](https://anaconda.org/conda-forge/gz-math8) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-math8.svg)](https://anaconda.org/conda-forge/gz-math8) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-math8.svg)](https://anaconda.org/conda-forge/gz-math8) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-math8.svg)](https://anaconda.org/conda-forge/gz-math8) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--math8--python-green.svg)](https://anaconda.org/conda-forge/gz-math8-python) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-math8-python.svg)](https://anaconda.org/conda-forge/gz-math8-python) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-math8-python.svg)](https://anaconda.org/conda-forge/gz-math8-python) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-math8-python.svg)](https://anaconda.org/conda-forge/gz-math8-python) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--math8-green.svg)](https://anaconda.org/conda-forge/libgz-math8) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-math8.svg)](https://anaconda.org/conda-forge/libgz-math8) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-math8.svg)](https://anaconda.org/conda-forge/libgz-math8) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-math8.svg)](https://anaconda.org/conda-forge/libgz-math8) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--math-green.svg)](https://anaconda.org/conda-forge/gz-math) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-math.svg)](https://anaconda.org/conda-forge/gz-math) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-math.svg)](https://anaconda.org/conda-forge/gz-math) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-math.svg)](https://anaconda.org/conda-forge/gz-math) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--math--python-green.svg)](https://anaconda.org/conda-forge/gz-math-python) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-math-python.svg)](https://anaconda.org/conda-forge/gz-math-python) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-math-python.svg)](https://anaconda.org/conda-forge/gz-math-python) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-math-python.svg)](https://anaconda.org/conda-forge/gz-math-python) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--math-green.svg)](https://anaconda.org/conda-forge/libgz-math) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-math.svg)](https://anaconda.org/conda-forge/libgz-math) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-math.svg)](https://anaconda.org/conda-forge/libgz-math) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-math.svg)](https://anaconda.org/conda-forge/libgz-math) |
 
-Installing gz-math8
-===================
+Installing gz-math
+==================
 
-Installing `gz-math8` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `gz-math` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gz-math8, gz-math8-python, libgz-math8` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gz-math, gz-math-python, libgz-math` can be installed with `conda`:
 
 ```
-conda install gz-math8 gz-math8-python libgz-math8
-```
-
-or with `mamba`:
-
-```
-mamba install gz-math8 gz-math8-python libgz-math8
-```
-
-It is possible to list all of the versions of `gz-math8` available on your platform with `conda`:
-
-```
-conda search gz-math8 --channel conda-forge
+conda install gz-math gz-math-python libgz-math
 ```
 
 or with `mamba`:
 
 ```
-mamba search gz-math8 --channel conda-forge
+mamba install gz-math gz-math-python libgz-math
+```
+
+It is possible to list all of the versions of `gz-math` available on your platform with `conda`:
+
+```
+conda search gz-math --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search gz-math --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search gz-math8 --channel conda-forge
+mamba repoquery search gz-math --channel conda-forge
 
-# List packages depending on `gz-math8`:
-mamba repoquery whoneeds gz-math8 --channel conda-forge
+# List packages depending on `gz-math`:
+mamba repoquery whoneeds gz-math --channel conda-forge
 
-# List dependencies of `gz-math8`:
-mamba repoquery depends gz-math8 --channel conda-forge
+# List dependencies of `gz-math`:
+mamba repoquery depends gz-math --channel conda-forge
 ```
 
 
@@ -218,17 +218,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating gz-math8-feedstock
-===========================
+Updating gz-math-feedstock
+==========================
 
-If you would like to improve the gz-math8 recipe or build a new
+If you would like to improve the gz-math recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/gz-math8-feedstock are
+Note that all branches in the conda-forge/gz-math-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
