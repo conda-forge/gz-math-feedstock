@@ -17,7 +17,7 @@ source:
     sha256: "6a6e9af99378b4ab81392bd8ad58be1c611f917c669c981b39cf20fc03d412f4"
 
 build:
-  number: 1
+  number: 2
 
 outputs:
   - package:
@@ -119,6 +119,45 @@ outputs:
       - python:
           imports:
             - gz.math8
+
+
+  - package:
+      name: libgz-math
+    requirements:
+      run:
+        - ${{ pin_subpackage(cxx_name, exact=true) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+        - ${{ pin_subpackage('libgz-math', upper_bound='x') }}
+    tests:
+      - script:
+          - cmake-package-check gz-math8
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+
+  - package:
+      name: gz-math
+    requirements:
+      run:
+        - ${{ pin_subpackage(name, exact=true) }}
+      run_exports:
+        - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
+        - ${{ pin_subpackage('libgz-math', upper_bound='x') }}
+    tests:
+      - script:
+          - cmake-package-check gz-math8
+        requirements:
+          run:
+            - cmake-package-check
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+      - python:
+          imports:
+            - gz.math8
+
 
 about:
   homepage: https://github.com/gazebosim/gz-math
