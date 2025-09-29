@@ -1,12 +1,11 @@
 context:
-  version: "8.2.0"
-  major_version: "8"
+  version: "9.0.0"
+  major_version: "9"
   component_name: "math"
-  component_version: "math8"
   repo_name: "gz-math"
-  name: "gz-math8"
-  cxx_name: "libgz-math8"
-  python_name: "gz-math8-python"
+  name: "gz-math"
+  cxx_name: "libgz-math"
+  python_name: "gz-math-python"
 
 recipe:
   name: ${{ name }}
@@ -17,7 +16,7 @@ source:
     sha256: "6a6e9af99378b4ab81392bd8ad58be1c611f917c669c981b39cf20fc03d412f4"
 
 build:
-  number: 1
+  number: 0
 
 outputs:
   - package:
@@ -41,8 +40,8 @@ outputs:
           then:
             - make
       host:
-        - libgz-cmake4
-        - libgz-utils3
+        - libgz-cmake
+        - libgz-utils
         - eigen
       run:
         - eigen
@@ -52,11 +51,11 @@ outputs:
     tests:
       - package_contents:
           include:
-            - "gz/${{ component_version }}/gz/${{ component_name }}.hh"
+            - "gz/${{ component_name }}/gz/${{ component_name }}.hh"
           lib:
             - ${{ name }}
       - script:
-          - cmake-package-check gz-math8
+          - cmake-package-check gz-math
         requirements:
           run:
             - cmake-package-check
@@ -98,7 +97,7 @@ outputs:
     tests:
       - python:
           imports:
-            - gz.math8
+            - gz.math
 
   - package:
       name: ${{ name }}
@@ -110,7 +109,7 @@ outputs:
         - ${{ pin_subpackage(cxx_name, upper_bound='x') }}
     tests:
       - script:
-          - cmake-package-check gz-math8
+          - cmake-package-check gz-math
         requirements:
           run:
             - cmake-package-check
@@ -118,7 +117,7 @@ outputs:
             - ${{ compiler('cxx') }}
       - python:
           imports:
-            - gz.math8
+            - gz.math
 
 about:
   homepage: https://github.com/gazebosim/gz-math
