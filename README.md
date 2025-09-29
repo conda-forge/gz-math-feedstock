@@ -1,5 +1,5 @@
-About gz-math7-feedstock
-========================
+About gz-math-feedstock
+=======================
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/gz-math-feedstock/blob/main/LICENSE.txt)
 
@@ -125,55 +125,58 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--math-green.svg)](https://anaconda.org/conda-forge/gz-math) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-math.svg)](https://anaconda.org/conda-forge/gz-math) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-math.svg)](https://anaconda.org/conda-forge/gz-math) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-math.svg)](https://anaconda.org/conda-forge/gz-math) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-gz--math--python-green.svg)](https://anaconda.org/conda-forge/gz-math-python) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-math-python.svg)](https://anaconda.org/conda-forge/gz-math-python) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-math-python.svg)](https://anaconda.org/conda-forge/gz-math-python) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-math-python.svg)](https://anaconda.org/conda-forge/gz-math-python) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gz--math7-green.svg)](https://anaconda.org/conda-forge/gz-math7) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-math7.svg)](https://anaconda.org/conda-forge/gz-math7) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-math7.svg)](https://anaconda.org/conda-forge/gz-math7) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-math7.svg)](https://anaconda.org/conda-forge/gz-math7) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-gz--math7--python-green.svg)](https://anaconda.org/conda-forge/gz-math7-python) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/gz-math7-python.svg)](https://anaconda.org/conda-forge/gz-math7-python) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/gz-math7-python.svg)](https://anaconda.org/conda-forge/gz-math7-python) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/gz-math7-python.svg)](https://anaconda.org/conda-forge/gz-math7-python) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--math-green.svg)](https://anaconda.org/conda-forge/libgz-math) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-math.svg)](https://anaconda.org/conda-forge/libgz-math) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-math.svg)](https://anaconda.org/conda-forge/libgz-math) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-math.svg)](https://anaconda.org/conda-forge/libgz-math) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-libgz--math7-green.svg)](https://anaconda.org/conda-forge/libgz-math7) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libgz-math7.svg)](https://anaconda.org/conda-forge/libgz-math7) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libgz-math7.svg)](https://anaconda.org/conda-forge/libgz-math7) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libgz-math7.svg)](https://anaconda.org/conda-forge/libgz-math7) |
 
-Installing gz-math7
-===================
+Installing gz-math
+==================
 
-Installing `gz-math7` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
+Installing `gz-math` from the `conda-forge` channel can be achieved by adding `conda-forge` to your channels with:
 
 ```
 conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `gz-math7, gz-math7-python, libgz-math7` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `gz-math, gz-math-python, gz-math7, gz-math7-python, libgz-math, libgz-math7` can be installed with `conda`:
 
 ```
-conda install gz-math7 gz-math7-python libgz-math7
-```
-
-or with `mamba`:
-
-```
-mamba install gz-math7 gz-math7-python libgz-math7
-```
-
-It is possible to list all of the versions of `gz-math7` available on your platform with `conda`:
-
-```
-conda search gz-math7 --channel conda-forge
+conda install gz-math gz-math-python gz-math7 gz-math7-python libgz-math libgz-math7
 ```
 
 or with `mamba`:
 
 ```
-mamba search gz-math7 --channel conda-forge
+mamba install gz-math gz-math-python gz-math7 gz-math7-python libgz-math libgz-math7
+```
+
+It is possible to list all of the versions of `gz-math` available on your platform with `conda`:
+
+```
+conda search gz-math --channel conda-forge
+```
+
+or with `mamba`:
+
+```
+mamba search gz-math --channel conda-forge
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search gz-math7 --channel conda-forge
+mamba repoquery search gz-math --channel conda-forge
 
-# List packages depending on `gz-math7`:
-mamba repoquery whoneeds gz-math7 --channel conda-forge
+# List packages depending on `gz-math`:
+mamba repoquery whoneeds gz-math --channel conda-forge
 
-# List dependencies of `gz-math7`:
-mamba repoquery depends gz-math7 --channel conda-forge
+# List dependencies of `gz-math`:
+mamba repoquery depends gz-math --channel conda-forge
 ```
 
 
@@ -218,17 +221,17 @@ Terminology
                   produce the finished article (built conda distributions)
 
 
-Updating gz-math7-feedstock
-===========================
+Updating gz-math-feedstock
+==========================
 
-If you would like to improve the gz-math7 recipe or build a new
+If you would like to improve the gz-math recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `conda-forge` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `conda-forge` channel.
-Note that all branches in the conda-forge/gz-math7-feedstock are
+Note that all branches in the conda-forge/gz-math-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
