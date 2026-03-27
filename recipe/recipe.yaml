@@ -1,5 +1,5 @@
 context:
-  version: "9.0.0"
+  version: "9.1.0"
   major_version: "9"
   component_name: "math"
   repo_name: "gz-math"
@@ -13,7 +13,7 @@ recipe:
 
 source:
   - url: "https://github.com/gazebosim/${{ repo_name }}/archive/${{ repo_name }}${{ major_version }}_${{ version }}.tar.gz"
-    sha256: "e1eacfc2bf6b875ec270b6323cfaa8dfe043c9aaff9ceb8f87ff46e1cde9474a"
+    sha256: "d6d266a2a5094b977a3cfec4646efb2eede5fd36781a53faaa37ba416da5cdaf"
 
 build:
   number: 0
