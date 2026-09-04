@@ -1,0 +1,55 @@
+From f019a69670cf0144132b784d048666b0fabad99b Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Fri, 4 Sep 2026 13:29:15 +0200
+Subject: [PATCH] cmake: Search Development.Module Python component to compile
+ Python bindings
+
+---
+ CMakeLists.txt                     | 2 +-
+ src/CMakeLists.txt                 | 4 ++--
+ src/python_pybind11/CMakeLists.txt | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 73d4d259..38d0197a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,7 +99,7 @@ if (SKIP_PYBIND11)
+ else()
+   find_package(Python3 REQUIRED
+     COMPONENTS Interpreter
+-    OPTIONAL_COMPONENTS Development
++    OPTIONAL_COMPONENTS Development.Module
+   )
+ endif()
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 13ae1213..8af758c4 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -21,10 +21,10 @@ add_subdirectory(graph)
+ 
+ # Bindings subdirectories
+ if (NOT SKIP_PYBIND11)
+-  if (Python3_Development_FOUND)
++  if (Python3_Development.Module_FOUND)
+     add_subdirectory(python_pybind11)
+   else()
+-    message(WARNING "Python development libraries are missing: Python interfaces are disabled.")
++    message(WARNING "Python Development.Module libraries are missing: Python interfaces are disabled.")
+   endif()
+ endif()
+ 
+diff --git a/src/python_pybind11/CMakeLists.txt b/src/python_pybind11/CMakeLists.txt
+index e4a68c9a..7a4cb65c 100644
+--- a/src/python_pybind11/CMakeLists.txt
++++ b/src/python_pybind11/CMakeLists.txt
+@@ -7,7 +7,7 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
+   find_package(gz-math REQUIRED)
+   set(PROJECT_LIBRARY_TARGET_NAME "gz-math::gz-math")
+   # require python dependencies to be found
+-  find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
++  find_package(Python3 COMPONENTS Interpreter Development.Module REQUIRED)
+   set(CMAKE_REQUIRE_FIND_PACKAGE_pybind11 TRUE)
+   include(GNUInstallDirs)
+   include(CTest)
