@@ -131,3 +131,5 @@ extra:
     - wolfv
     - traversaro
     - j-rivero
+    - conda-forge/gz-sim
+
