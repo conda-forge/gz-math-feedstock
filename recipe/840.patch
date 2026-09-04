@@ -1,0 +1,55 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,21 +99,24 @@
+   if(${CMAKE_VERSION} VERSION_LESS "3.12.0")
+     set(GZ_PYTHON_VERSION "3")
+     find_package(PythonInterp ${GZ_PYTHON_VERSION} QUIET)
+     if(PYTHONINTERP_FOUND)
+       set(Python3_FOUND ${PYTHONINTERP_FOUND})
+       set(Python3_Interpreter_FOUND ${PYTHONINTERP_FOUND})
+       set(Python3_EXECUTABLE ${PYTHON_EXECUTABLE})
+       find_package(PythonLibs QUIET)
+       # we found the interpreter but did we also find the libs? both are required
+-      set(Python3_Development_FOUND ${PYTHONLIBS_FOUND})
++      set(Python3_Development.Module_FOUND ${PYTHONLIBS_FOUND})
+       set(Python3_VERSION ${PYTHONLIBS_VERSION_STRING})
+     endif()
++  elseif(${CMAKE_VERSION} VERSION_LESS "3.18.0")
++    find_package(Python3 QUIET COMPONENTS Interpreter Development)
++    set(Python3_Development.Module_FOUND ${Python3_Development_FOUND})
+   else()
+-    find_package(Python3 QUIET COMPONENTS Interpreter Development)
++    find_package(Python3 QUIET COMPONENTS Interpreter Development.Module)
+   endif()
+ 
+-  if (NOT Python3_Development_FOUND)
++  if (NOT Python3_Development.Module_FOUND)
+     message (STATUS "Searching for Python3 - not found.")
+   else()
+     message (STATUS "Searching for Python3 - found version ${Python3_VERSION}.")
+   endif()
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -21,10 +21,10 @@ add_subdirectory(graph)
+ 
+ # Bindings subdirectories
+ if (NOT SKIP_PYBIND11)
+-  if (Python3_Development_FOUND)
++  if (Python3_Development.Module_FOUND)
+     add_subdirectory(python_pybind11)
+   else()
+-    message(WARNING "Python development libraries are missing: Python interfaces are disabled.")
++    message(WARNING "Python Development.Module libraries are missing: Python interfaces are disabled.")
+   endif()
+ endif()
+ 
+diff --git a/src/python_pybind11/CMakeLists.txt b/src/python_pybind11/CMakeLists.txt
+--- a/src/python_pybind11/CMakeLists.txt
++++ b/src/python_pybind11/CMakeLists.txt
+@@ -8,3 +8,3 @@
+   # require python dependencies to be found
+-  find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
++  find_package(Python3 COMPONENTS Interpreter Development.Module REQUIRED)
+   set(CMAKE_REQUIRE_FIND_PACKAGE_pybind11 TRUE)
