@@ -1,5 +1,5 @@
 context:
-  version: "8.2.0"
+  version: "8.4.0"
   major_version: "8"
   component_name: "math"
   component_version: "math8"
@@ -17,7 +17,7 @@ source:
     sha256: "6a6e9af99378b4ab81392bd8ad58be1c611f917c669c981b39cf20fc03d412f4"
 
 build:
-  number: 3
+  number: 0
 
 outputs:
   - package:
