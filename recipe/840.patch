@@ -1,0 +1,36 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -99,7 +99,7 @@ if (SKIP_PYBIND11)
+ else()
+   find_package(Python3 REQUIRED
+     COMPONENTS Interpreter
+-    OPTIONAL_COMPONENTS Development
++    OPTIONAL_COMPONENTS Development.Module
+   )
+ endif()
+ 
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -21,10 +21,10 @@ add_subdirectory(graph)
+ 
+ # Bindings subdirectories
+ if (NOT SKIP_PYBIND11)
+-  if (Python3_Development_FOUND)
++  if (Python3_Development.Module_FOUND)
+     add_subdirectory(python_pybind11)
+   else()
+-    message(WARNING "Python development libraries are missing: Python interfaces are disabled.")
++    message(WARNING "Python Development.Module libraries are missing: Python interfaces are disabled.")
+   endif()
+ endif()
+ 
+diff --git a/src/python_pybind11/CMakeLists.txt b/src/python_pybind11/CMakeLists.txt
+--- a/src/python_pybind11/CMakeLists.txt
++++ b/src/python_pybind11/CMakeLists.txt
+@@ -9,3 +9,3 @@
+   # require python dependencies to be found
+-  find_package(Python3 COMPONENTS Interpreter Development REQUIRED)
++  find_package(Python3 COMPONENTS Interpreter Development.Module REQUIRED)
+   set(CMAKE_REQUIRE_FIND_PACKAGE_pybind11 TRUE)
