@@ -19,7 +19,7 @@ source:
       - 840.patch
 
 build:
-  number: 0
+  number: 1
 
 outputs:
   - package:
